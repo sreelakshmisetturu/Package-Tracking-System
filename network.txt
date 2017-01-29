@@ -1,0 +1,57 @@
+Northborough,MA$Edison,NJ$220.8
+Northborough,MA$Allentown,PA$285.8
+Northborough,MA$Detroit,MI$692.7
+Edison,NJ$Allentown,PA$72.8
+Edison,NJ$Martinsburg,WV$241.4
+Edison,NJ$Charlotte,NC$605.3
+Edison,NJ$Orlando,FL$1051.3
+Pittsburgh,PA$Allentown,PA$282
+Pittsburgh,PA$Martinsburg,WV$189
+Pittsburgh,PA$Grove City,OH$192.4
+Pittsburgh,PA$New Berlin,WI$555.4
+Allentown,PA$Martinsburg,WV$172.8
+Allentown,PA$Detroit,MI$553.3
+Martinsburg,WV$Charlotte,NC$385.5
+Martinsburg,WV$Grove City,OH$368.7
+Charlotte,NC$Atlanta,GA$244.2
+Charlotte,NC$Orlando,FL$523.7
+Charlotte,NC$Memphis,TN$619
+Charlotte,NC$Indianapolis,IN$575.8
+Atlanta,GA$Orlando,FL$441.6
+Atlanta,GA$Memphis,TN$384.2
+Atlanta,GA$Houston,TX$792.9
+Memphis,TN$Grove City,OH$578.9
+Memphis,TN$St. Louis,MO$283.4
+Memphis,TN$Kansas,KS$725.1
+Memphis,TN$Dallas,TX$452.7
+Grove City,OH$Detroit,MI$199.4
+Grove City,OH$Indianapolis,IN$165
+Indianapolis,IN$New Berlin,WI$283.1
+Indianapolis,IN$Minneapolis,MN$595.3
+Indianapolis,IN$St. Louis,MO$242.4
+Detroit,MI$New Berlin,WI$385.7
+New Berlin,WI$Minneapolis,MN$329.7
+Minneapolis,MN$St. Louis,MO$559.4
+Minneapolis,MN$Kansas,KS$668.7
+Minneapolis,MN$Denver,CO$914.6
+Minneapolis,MN$Seattle,WA$1656.4
+St. Louis,MO$Kansas,KS$480.7
+Kansas,KS$Dallas,TX$511.2
+Kansas,KS$Denver,CO$400.5
+Dallas,TX$Houston,TX$239
+Dallas,TX$Denver,CO$794.5
+Dallas,TX$Phoenix,AZ$1064.3
+Houston,TX$Phoenix,AZ$1174
+Denver,CO$Salt Lake City,UT$520.8
+Denver,CO$Phoenix,AZ$820.7
+Denver,CO$Seattle,WA$1316.7
+Salt Lake City,UT$Phoenix,AZ$659.7
+Salt Lake City,UT$Chino,CA$659.4
+Salt Lake City,UT$Sacramento,CA$649.1
+Salt Lake City,UT$Seattle,WA$839.8
+Phoenix,AZ$Los Angeles,CA$372
+Phoenix,AZ$Chino,CA$338.5
+Los Angeles,CA$Chino,CA$34.2
+Los Angeles,CA$Sacramento,CA$384.2
+Chino,CA$Sacramento,CA$417.2
+Sacramento,CA$Seattle,WA$752.3
