@@ -1,5 +1,6 @@
 package model.graph;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -319,7 +320,7 @@ public class Graph {
 		return path;
 	}
 
-	public void createGraph() {
+	public void createGraph(BufferedReader reader) {
 
 		Graph g = new Graph();
 		boolean status = true;
@@ -327,8 +328,8 @@ public class Graph {
 		double cost;
 
 		try {
-			FileReader fin = new FileReader("network.txt");
-			Scanner graphFile = new Scanner(fin);
+			//FileReader fin = new FileReader("network.txt");
+			Scanner graphFile = new Scanner(reader);
 
 			// Reads the edges and insert them into its corresponding vertices.
 			String line;
@@ -352,7 +353,7 @@ public class Graph {
 				}
 			}
 			graphFile.close();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			System.err.println(e);
 		}
 	}

@@ -19,9 +19,8 @@ public class ProcessPackets implements Runnable {
 	ArrayList<Double> transitDistance = new ArrayList<>();
 	private final String status1 = "In Transit";
 	private final String status2 = "Delivered";
-	private int cityPosition = 0, id;
+	private int  cityPosition = 0, id;
 	String [] activity = {"Picked up", "In FedEx  possession", "Arrived at FedEx location", "Departed at FedEx location", "At local FedEx location"};
-
 	public ProcessPackets(Connection DbInstance, Packet packet) {
 		super();
 		this.DbInstance = DbInstance;
@@ -44,6 +43,7 @@ public class ProcessPackets implements Runnable {
 		status = packet.getStatus();
 		splitPath(path);
 		try {
+			cityPosition=transitCities.indexOf(currentCity);
 			while (!status.equals("Delivered")) {
 				switch (status) {
 				case "Package at Warehouse":
@@ -58,17 +58,18 @@ public class ProcessPackets implements Runnable {
 					Thread.sleep(timeToSleep(transitDistance.get(cityPosition)));
 					break;
 				case "In Transit":
-					if (cityPosition != (transitCities.size() - 1)) {
+					if (cityPosition != (transitCities.size()-1)) {
 						timeStamp = getDate();
 						updatePacket(id, defaultDate, defaultDate, "", transitCities.get(cityPosition));
 						addTravelHistory(id, timeStamp, activity[2], transitCities.get(cityPosition));
 						Thread.sleep(timeToSleep(100));
 						addTravelHistory(id, timeStamp, activity[3], transitCities.get(cityPosition));
+						cityPosition++;
 					} else {
 						status = "BeforeDelivered";
 					}
-					Thread.sleep(timeToSleep(transitDistance.get(cityPosition)));
-					cityPosition++;
+					
+					Thread.sleep(timeToSleep(transitDistance.get(cityPosition)));					
 					break;
 				case "BeforeDelivered":
 					timeStamp = getDate();

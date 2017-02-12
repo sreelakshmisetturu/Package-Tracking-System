@@ -1,12 +1,14 @@
 package model;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Packet {
 	private int id, pieces;
 	private double weight;
 	private Date start, end;
 	private String source, destination, currentCity, dimensions, service, packaging, status, path;
+	private ArrayList<History> history;
 
 	public int getId() {
 		return id;
@@ -110,5 +112,13 @@ public class Packet {
 
 	public void setPath(String path) {
 		this.path = path;
+	}
+
+	public ArrayList<History> getHistory() {
+		return history;
+	}
+
+	public void setHistory(ArrayList<History> history) {
+		this.history = history;
 	}
 }

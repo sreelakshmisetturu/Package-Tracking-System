@@ -1,0 +1,27 @@
+CREATE TABLE `FEDEXPACKAGES` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Weight` double NOT NULL,
+  `Dimensions` varchar(20) NOT NULL,
+  `TotalPieces` int(11) NOT NULL,
+  `Service` varchar(50) NOT NULL,
+  `Packaging` varchar(50) NOT NULL,
+  `Source` varchar(50) NOT NULL DEFAULT '',
+  `Destination` varchar(50) NOT NULL DEFAULT '',
+  `CurrentCity` varchar(50) NOT NULL DEFAULT '',
+  `Path` varchar(500) NOT NULL DEFAULT '',
+  `StartDate` datetime DEFAULT NULL,
+  `EndDate` datetime DEFAULT NULL,
+  `Status` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2078 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `TRAVELHISTORY` (
+  `TravelID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL,
+  `TimeStamp` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `Activity` varchar(50) NOT NULL DEFAULT '',
+  `Location` varchar(30) NOT NULL DEFAULT '',
+  PRIMARY KEY (`TravelID`),
+  KEY `ID` (`ID`),
+  CONSTRAINT `travelhistory_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `FEDEXPACKAGES` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8;

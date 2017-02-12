@@ -1,5 +1,6 @@
 package model;
 
+import java.io.BufferedReader;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,10 +17,12 @@ public class DBUtil {
 	private double weight;
 	private int index, pieces;
 	private String initialStatus = "Package at Warehouse";
+	BufferedReader reader;
 
-	public DBUtil(Connection DbInstance) {
+	public DBUtil(Connection DbInstance, BufferedReader reader) {
 		super();
 		this.DbInstance = DbInstance;
+		this.reader = reader;
 	}
 
 	public void initialize() {
@@ -58,7 +61,7 @@ public class DBUtil {
 			// * diff));
 
 			Graph graph = new Graph();
-			graph.createGraph();
+			graph.createGraph(reader);
 			graph.dijkstrasAlgo(source, destination);
 			StringBuilder path = graph.printPath(destination);
 			Statement stmt = null;
@@ -131,5 +134,43 @@ public class DBUtil {
 			e.printStackTrace();
 		}
 		return records;
+	}
+	
+	public Packet getHistory(int id) {
+		ArrayList<History> travelHistory = new ArrayList<>();
+		Packet packet = new Packet();
+		
+		try {
+			Statement stmt = DbInstance.createStatement();
+			String sql = "SELECT * FROM FEDEXPACKAGES WHERE ID = " + id;
+			String query = "SELECT * FROM TRAVELHISTORY WHERE ID = " + id;
+			ResultSet rs2 = stmt.executeQuery(sql);
+			while(rs2.next()) {
+				packet.setId(rs2.getInt("ID"));
+				packet.setSource(rs2.getString("Source"));
+				packet.setDestination(rs2.getString("Destination"));
+				packet.setCurrentCity(rs2.getString("CurrentCity"));
+				packet.setStatus(rs2.getString("Status"));
+				packet.setDimensions(rs2.getString("Dimensions"));
+				packet.setPieces(rs2.getInt("TotalPieces"));
+				packet.setWeight(rs2.getDouble("Weight"));
+				packet.setPackaging(rs2.getString("Packaging"));
+				packet.setService(rs2.getString("Service"));
+			}
+			ResultSet rs1 = stmt.executeQuery(query);
+			while(rs1.next()) {
+				History history = new History();
+				history.setActivity(rs1.getString("Activity"));
+				history.setLocation(rs1.getString("Location"));
+				history.setTimeStamp(rs1.getTimestamp("TimeStamp"));
+				travelHistory.add(history);
+			}
+			packet.setHistory(travelHistory);
+		} catch (SQLException se) {
+			se.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return packet;
 	}
 }
